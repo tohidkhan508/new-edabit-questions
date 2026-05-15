@@ -1,213 +1,255 @@
-// 28. Half, Quarter and Eighth
-// Create a function that takes a number and return an array of three numbers: half of the number, quarter of the number and an eighth of the number.
+// 41. Array From a Range of Numbers
+// Create a function that returns an array of all the integers between two given numbers start and end.
 
 // 1 => Example
-
-// function halfQuarterEighth(num) {
-//     return [num / 2, num / 4, num / 8];
+// function rangeOfNum(start, end) {
+//     let result = [];
+//     for(let i = start + 1; i < end; i++) {
+//         result.push(i);
+//     }
+//     return result;
 // }
 
 // 2 => Example
-
-// function halfQuarterEighth(num) {
-//     let result = []; 
-//     let division = [2, 4, 8];
-
-//     for(let i = 0; i < division.length; i++) {
-//         result.push(num / division[i]);
+// function rangeOfNum(start, end) {
+//     let result = [];
+//     let value = Array(end - start - 1).fill(0);
+//     let num = start + 1;
+//     for(let value1 of value) {
+//         result.push(num);
+//         num++;
 //     }
 //     return result;
 // }
 
 // 3 => Example
-
-// function halfQuarterEighth(num) {
+// function rangeOfNum(start, end) {
 //     let result = [];
-//     let division = [2, 4, 8];
-
-//     for(let i of division) {
-//         result.push(num / i);
-//     }
-//     return result;
-// }
-
-// 4 => Example
-
-// function halfQuarterEighth(num) {
-//     let result = [];
-//     let division = [2, 4, 8];
-
-//     division.forEach((value) => {
-//         result.push(num / value);
+//     let value = Array(end - start - 1).fill(0);
+//     value.forEach((_, idx) => {
+//         result.push(start + idx + 1);
 //     });
 //     return result;
 // }
 
-// 5 => Example
-
-// function halfQuarterEighth(num) {
-//     return [2, 4, 8].map(x => num / x);
-// }
-
-// 6 => Example
-
-// function halfQuarterEighth(num) {
-//     return [2, 4, 8].reduce((acc, val) => {
-//         acc.push(num / val);
-//         return acc
-//     }, []);
-// }
-
-// Examples
-// console.log(halfQuarterEighth(6)) // ➞ [3, 1.5, 0.75]
-// console.log(halfQuarterEighth(22)) // ➞ [11, 5.5, 2.75]
-// console.log(halfQuarterEighth(25)) // ➞ [12.5, 6.25, 3.125]
+// // Examples
+// console.log(rangeOfNum(2, 4)) // ➞ [3]
+// console.log(rangeOfNum(5, 9)) // ➞ [6, 7, 8]
+// console.log(rangeOfNum(2, 11)) // ➞ [3, 4, 5, 6, 7, 8, 9, 10]
 
 
 
-// 29. Shapes With N Sides
-// Create a function that takes a whole number as input and returns the shape with that number's amount of sides. Here are the expected outputs to get from these inputs.
+// 42. Sum Greater Than Five
+// Write a function that returns the sum of elements greater than 5, in the given array .
 
-// Inputs	Outputs
-// 1	"circle"
-// 2	"semi-circle"
-// 3	"triangle"
-// 4	"square"
-// 5	"pentagon"
-// 6	"hexagon"
-// 7	"heptagon"
-// 8	"octagon"
-// 9	"nonagon"
-// 10	"decagon"
-
-// 1 => Example
-
-// function nSidedShape(num) {
-//     let shapes = ["circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon"];
-
-//     return shapes[num - 1];
+// 1 =>  Exmaple
+// function sumFive(arr) {
+//     let sum = 0;
+//     for(let i = 0; i < arr.length; i++) {
+//         if(arr[i] > 5) {
+//             sum += arr[i];
+//         }
+//     }
+//     return sum;
 // }
 
 // 2 => Example
-
-// function nSidedShape(num) {
-//     let shapes = ["circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon"];
-
-//     for(let i = 0; i < shapes.length; i++) {
-//         if(i === num - 1) {
-//             return shapes[i];
+// function sumFive(arr) {
+//     let sum = 0;
+//     for(let num of arr) {
+//         if(num > 5) {
+//             sum += num;
 //         }
 //     }
+//     return sum;
 // }
 
 // 3 => Example
-
-// function nSidedShape(num) {
-//     let shapes = ["circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon"];
-//     let i = 0;
-
-//     for(let value of shapes) {
-//         if(i === num - 1) {
-//             return value;
+// function sumFive(arr) {
+//     let sum = 0;
+//     arr.forEach((value) => {
+//         if(value > 5) {
+//             sum += value;
 //         }
-//         i++;
-//     }
+//     });
+//     return sum;
 // }
 
 // 4 => Example
-
-// function nSidedShape(num) {
-//     let shapes = ["circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon"];
-//     let result;
-
-//    shapes.forEach((value, index) => {
-//     if(index === num - 1) {
-//         result = value;
-//     }
-//    });
-//    return result;
-// }
-
-// 5 => Example
-
-// function nSidedShape(num) {
-//     let shapes = ["circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon", "octagon", "nonagon", "decagon"];
-
-//      return shapes.reduce((result, value, idx) => {
-//         if(idx === num - 1) {
-//             result = value;
+// function sumFive(arr) {
+//     return arr.reduce((sum, val) => {
+//         if(val > 5) {
+//             return sum + val;
 //         }
-//         return result;
-//     }, "");
+//         return sum;
+//     }, 0)
 // }
 
 // // Examples
-// console.log(nSidedShape(3)) // ➞ "triangle"
-// console.log(nSidedShape(1)) // ➞ "circle"
-// console.log(nSidedShape(9)) // ➞ "nonagon"
+// console.log(sumFive([1, 5, 20, 30, 4, 9, 18])) // ➞ 77
+// console.log(sumFive([1, 2, 3, 4])) // ➞ 0
+// console.log(sumFive([10, 12, 28, 47, 55, 100])) // ➞ 252
 
 
 
-// 30. Multiply Every Array Item by Two
-// Create a function that takes an array with numbers and return an array with the elements multiplied by two.
+// 43. Skip the Drinks with Too Much Sugar
+// Write a function that takes an array of drinks and returns an array of only drinks with no sugar in them. Drinks that contain sugar (in this challenge) are:
 
 // 1 => Example
-
-// function getMultipliedArr(arr) {
-//     return arr.map(x => x * 2);
+// function skipTooMuchSugarDrinks(arr) {
+//     let result = [];
+//     for(let i = 0; i < arr.length; i++) {
+//         if(arr[i] !== "fanta" && arr[i] !== "cola") {
+//             result.push(arr[i]);
+//         }
+//     }
+//     return result;
 // }
 
 // 2 => Example
-
-// function getMultipliedArr(arr) {
+// function skipTooMuchSugarDrinks(arr) {
 //     let result = [];
-//     for(let i = 0; i < arr.length; i++) {
-//         result[i] = arr[i] * 2;
+//     for(let str of arr) {
+//         if(str !== "fanta" && str !== "cola") {
+//             result.push(str);
+//         }
 //     }
 //     return result
 // }
 
 // 3 => Example
+// function skipTooMuchSugarDrinks(arr) {
+//     let result = [];
+//     arr.forEach((val, idx) => {
+//         if(val !== "fanta" && val !== "cola") {
+//             result.push(val);
+//         }
+//     });
+//     return result;
+// }
 
-// function getMultipliedArr(arr) {
+// 4 => Example
+// function skipTooMuchSugarDrinks(arr) {
+//     return arr.filter((val) => val !== "fanta" && val !== "cola");
+// }
+
+// // cola
+// // fanta
+// // Examples
+// console.log(skipTooMuchSugarDrinks(["fanta", "cola", "water"])) // ➞ ["water"]
+// console.log(skipTooMuchSugarDrinks(["fanta", "cola"])) // ➞ []
+// console.log(skipTooMuchSugarDrinks(["lemonade", "beer", "water"])) // ➞ ["lemonade", "beer", "water"]
+
+
+
+// 44. Add the Index
+// Given an array of numbers, create a function which returns the same array but with each element's index in the array added to itself. This means you add 0 to the number at index 0, add 1 to the number at index 1, etc...
+
+// 1 => Example
+// function addIndexes(arr) {
+//     return arr.map((num1, num2) => num1 + num2);
+// }
+
+// 2 => Example
+// function addIndexes(arr) {
+//     return arr.reduce((acc,num1, num2) => {
+//         acc.push(num1 + num2);
+//         return acc;
+//     },[]);
+// }
+
+// 3 => Example
+// function addIndexes(arr) {
+//     let result = [];
+//     for(let i = 0; i < arr.length; i++) {
+//         result.push(arr[i] + i);
+//     }
+//     return result;
+// }
+
+// 4 => Example
+// function addIndexes(arr) {
 //     let result = [];
 //     let i = 0;
-//     for(let value of arr) {
-//         result[i] = value * 2;
+//     for(let val of arr) {
+//         result.push(val + i);
 //         i++;
+//     }
+//     return result;
+// }
+
+// 5 => Example
+function addIndexes(arr) {
+    let result = [];
+    arr.forEach((val, idx) => {
+        result.push(val + idx);
+    });
+    return result;
+}
+
+// Examples
+console.log(addIndexes([0, 0, 0, 0, 0])) // ➞ [0, 1, 2, 3, 4]
+console.log(addIndexes([1, 2, 3, 4, 5])) // ➞ [1, 3, 5, 7, 9]
+console.log(addIndexes([5, 4, 3, 2, 1])) // ➞ [5, 5, 5, 5, 5]
+
+// 45. Filter Strings from Array
+// Create a function that takes an array of strings and numbers, and filters out the array so that it returns an array of integers only.
+
+// 1 => Example
+
+// function filterArray(arr) {
+//     return arr.filter(num => typeof num === "number");
+// };
+
+// 2 => Example
+
+// function filterArray(arr) {
+//     let result = [];
+//     for(let i = 0; i < arr.length; i++) {
+//         if(typeof arr[i] === "number") {
+//             result.push(arr[i]);
+//         }
+//     }
+//     return result;
+// }
+
+// 3 => Example
+
+// function filterArray(arr) {
+//     let result = [];
+//     for(let val of arr) {
+//         if(typeof val === "number") {
+//             result.push(val);
+//         }
 //     }
 //     return result;
 // }
 
 // 4 => Example
 
-// function getMultipliedArr(arr) {
+// function filterArray(arr) {
 //     let result = [];
-//     let i = 0;
-//     arr.forEach((value) => {
-//         result[i] = value * 2;
-//         i++
+//     arr.forEach((num) => {
+//         if(typeof num === "number") {
+//             result.push(num);
+//         }
 //     });
 //     return result;
 // }
 
 // 5 => Example
 
-// function getMultipliedArr(arr) {
-//     let result;
-//     return arr.reduce((acc, value) => {
-//         acc.push(value * 2);
+// function filterArray(arr) {
+//     return arr.reduce((acc, val) => {
+//         if(typeof val === "number") {
+//             acc.push(val);
+//         }
 //         return acc;
 //     }, []);
 // }
 
-// 6 => Example
-
-function getMultipliedArr(arr) {
-    return Array.from(arr, x => x * 2);
-}
-
 // Examples
-console.log(getMultipliedArr([2, 5, 3])) // ➞ [4, 10, 6]
-console.log(getMultipliedArr([1, 86, -5])) // ➞ [2, 172, -10]
-console.log(getMultipliedArr([5, 382, 0])) // ➞ [10, 764, 0]
+// console.log(filterArray([1, 2, 3, "a", "b", 4])) // ➞ [1, 2, 3, 4]
+// console.log(filterArray(["A", 0, "Edabit", 1729, "Python", "1729"])) // ➞ [0, 1729]
+// console.log(filterArray(["Nothing", "here"])) // ➞ []
+
